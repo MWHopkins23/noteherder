@@ -3,4 +3,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 create-react-app futurenote
 cd futurenote
 yarn add gh-pages --dev
-yarn add re-base
+yarn add re-base react-router bootstrap font-awesome
+
+Firebase:
+Add GitHub auth
+Add authorized domain
