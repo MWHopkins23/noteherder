@@ -1,0 +1,48 @@
+.Main {
+  display: flex;
+  height: 100vh;
+  align-items: stretch; }
+
+.Nav {
+  width: 60px;
+  background-color: #f3f3f3;
+  padding: 0.5rem 0; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; }
+.Nav .logo {
+  font-family: "Fauna One";
+  color: #666;
+  font-size: 3rem;
+}
+
+.Nav button {
+  border: 0;
+}
+.Nav .UserLinks {
+  position: absolute;
+  bottom: 10px;
+}
+.Nav .UserLinks button {
+  background: transparent;
+}
+.Nav button i.fa {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 36px;
+}
+.Nav button.new-note {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 2rem;
+  font-weight: 300;
+  background-color: #008BF8;
+  color: white;
+  font-size: 3rem;
+}
+.Nav button.new-note span {
+  position: relative;
+  top: -5px;
+  left: 0;
+}

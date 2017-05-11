@@ -65,42 +65,7 @@ input#note_title {
   input#note_title:focus {
     outline: none; }
 
-ul#notes {
-  overflow-y: scroll;
-  height: calc(100vh - 110px);
-  list-style: none;
-  margin-top: 1em;
-  padding: 0;
-  width: 100%;
-  color: #999; }
-  ul#notes li {
-    border-top: 1px solid #ddd;
-    height: 100px;
-    font-size: 90%;
-    cursor: pointer;
-    overflow: hidden; }
-    ul#notes li:first-of-type {
-      border-top: none; }
-    ul#notes li:hover {
-      color: white;
-      background-color: #008BF8; }
-      ul#notes li:hover .note-title {
-        color: white; }
-    ul#notes li .note-title {
-      color: black;
-      font-family: "Fauna One";
-      font-size: 120%;
-      font-weight: 400; }
-    ul#notes li .note-body {
-      height: 54px;
-      overflow: hidden; }
-    ul#notes li a.note {
-      display: block;
-      height: 100px;
-      padding: 1em;
-      text-decoration: none; }
-    ul#notes li a.note:hover {
-      color: white; }
+
 
 
 
