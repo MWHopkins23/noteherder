@@ -1,6 +1,6 @@
 {
   "name": "futurenote",
-  "homepage": "https://dstrus.github.io/futurenote/",
+  "homepage": "https://dstrus.github.io/noteherder/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
