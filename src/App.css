@@ -55,20 +55,6 @@ i.fa-trash-o {
 .wysihtml5-toolbar .btn-default {
   color: #999; }
 
-input#note_title {
-  border: none;
-  font-size: 200%;
-  font-family: "Fauna One";
-  color: #008BF8;
-  font-weight: 400;
-  width: 100%; }
-  input#note_title:focus {
-    outline: none; }
-
-
-
-
-
 #welcome h1 {
   color: #008BF8; }
 #welcome main {
