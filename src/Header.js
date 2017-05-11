@@ -1,19 +1,22 @@
 import React from 'react'
 
-const Header = ({ signOut }) => {
+const UserLinks = ({ authed, signOut }) => (
+  <div className="user-links">
+    <button onClick={signOut}>
+      <i className="fa fa-sign-out"></i>
+    </button>
+  </div>
+)
+
+const Header = ({ authed, signOut }) => {
+  const userLinks = authed ? <UserLinks signOut={signOut} /> : ''
   return (
-    <div className="row">
-      <div className="col-xs-12">
+
         <header>
-          <div className="well">
-            Futurenote
-            <div className="user-links">
-              <button onClick={signOut}>Sign Out</button>
-            </div>
-          </div>
+          <span className="title">Noteherder</span>
+          { userLinks }
         </header>
-      </div>
-    </div>
+
   )
 }
 

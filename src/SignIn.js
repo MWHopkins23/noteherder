@@ -1,6 +1,8 @@
 import React from 'react'
 
+import './SignIn.css'
 import base from './base'
+import Header from './Header'
 
 const SignIn = ({ authHandler }) => {
   const authenticate = (provider) => {
@@ -9,18 +11,21 @@ const SignIn = ({ authHandler }) => {
 
   return (
     <div className="SignIn container">
-      <div className="row">
-        <div className="col-xs-6 col-xs-offset-4">
-          <h3>Welcome!</h3>
-          <div id="auth-form">
-            <button className="github btn btn-default" onClick={() => authenticate('github')}>
-              <i className="fa fa-github"></i>
-              {' '}
-              Sign In With GitHub
-            </button>
-          </div>
+      <Header authed={false} />
+      <main>
+        <div>
+          <h3>Hey, Nerd! You Like Notes?</h3>
+          <p>
+            You never know when you'll need to write crap down. In fact,
+            you should probably be taking notes right now.
+          </p>
+          <button className="github btn btn-default" onClick={() => authenticate('github')}>
+            <i className="fa fa-github"></i>
+            {' '}
+            <span>Sign In With GitHub</span>
+          </button>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

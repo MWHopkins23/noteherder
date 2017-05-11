@@ -1,12 +1,12 @@
-@import url("http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic|Oxygen:400,300,700");
+@import url("http://fonts.googleapis.com/css?family=Fauna+One|Oxygen:400,300,700");
 
 .App {
   font-family: Oxygen, Helvetica, Arial, sans-serif; }
 
 h1, h2, h3, h4, h5 {
-font-family: Merriweather;
-font-weight: 300;
-color: #FE5F55; }
+font-family: "Fauna One";
+font-weight: 400;
+color: #008BF8; }
 
 .container {
   width: 100% !important;
@@ -21,17 +21,28 @@ color: #FE5F55; }
   padding-left: 0 !important;
   padding-right: 0 !important; }
 
-header .well {
-  padding-top: 5px;
-  padding-bottom: 5px; }
-  header .well .user-links {
-    float: right;
-    color: #ccc; }
-    header .well .user-links a {
-      cursor: pointer; }
+header {
+  color: #666;
+  /*background-color: #f3f3f3;*/
+  min-height: 20px;
+  padding: 10px;
+  margin-bottom: 20px; }
+  header .title {
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase; }
+  header .user-links {
+    float: right; }
+    header .user-links button {
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      border: 0; }
+      header .user-links button:hover {
+        color: #999; }
 
 a:link, a:visited, a:hover, a:active {
-  color: #FE5F55; }
+  color: #008BF8; }
 
 i.fa-trash-o {
   cursor: pointer;
@@ -47,9 +58,9 @@ i.fa-trash-o {
 input#note_title {
   border: none;
   font-size: 200%;
-  font-family: Merriweather;
-  color: #FE5F55;
-  font-weight: 300;
+  font-family: "Fauna One";
+  color: #008BF8;
+  font-weight: 400;
   width: 100%; }
   input#note_title:focus {
     outline: none; }
@@ -72,14 +83,14 @@ ul#notes {
       border-top: none; }
     ul#notes li:hover {
       color: white;
-      background-color: #FE5F55; }
+      background-color: #008BF8; }
       ul#notes li:hover .note-title {
         color: white; }
     ul#notes li .note-title {
       color: black;
-      font-family: Merriweather;
+      font-family: "Fauna One";
       font-size: 120%;
-      font-weight: 300; }
+      font-weight: 400; }
     ul#notes li .note-body {
       height: 54px;
       overflow: hidden; }
@@ -91,16 +102,10 @@ ul#notes {
     ul#notes li a.note:hover {
       color: white; }
 
-#auth-form input[type="text"],
-#auth-form input[type="password"] {
-  width: 300px;
-  font-size: 120%;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  padding: 0.25em; }
+
 
 #welcome h1 {
-  color: #FE5F55; }
+  color: #008BF8; }
 #welcome main {
   margin: 0 auto;
   width: 360px; }

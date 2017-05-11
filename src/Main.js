@@ -1,8 +1,13 @@
 import React from 'react'
 
-const Main = () => {
+import Header from './Header'
+
+const Main = ({ signOut }) => {
   return (
-    <h2>Main</h2>
+    <div className="container">
+      <Header authed={true} signOut={signOut} />
+      <h2>Main</h2>
+    </div>
   )
 }
 

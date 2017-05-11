@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 
-import '../node_modules/font-awesome/css/font-awesome.min.css'
+import 'font-awesome/css/font-awesome.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './App.css';
 import base from './base'
-import Header from './Header'
 import SignIn from './SignIn'
 import Main from './Main'
 
@@ -69,13 +68,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container wrap">
-        <Header signOut={this.signOut} />
+      <div className="App container wrap">
         <Router>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/notes" />} />
-            <PrivateRoute path="/notes" authed={this.authed()} component={Main}></PrivateRoute>
-            <PublicRoute path="/sign-in" authed={this.authed()} render={() => <SignIn authHandler={this.authHandler} />} />
+            <PrivateRoute path="/notes" authed={this.authed()} render={() => (
+              <Main signOut={this.signOut} />
+            )} />
+            <PublicRoute path="/sign-in" authed={this.authed()} render={() => (
+              <SignIn authHandler={this.authHandler} />
+            )} />
           </Switch>
         </Router>
       </div>
