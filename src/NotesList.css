@@ -34,10 +34,12 @@ ul#notes {
       padding: 1rem 4px; }
     ul#notes li:first-of-type .note {
       border-top: none; }
-    ul#notes li:hover {
+    ul#notes li:hover,
+    ul#notes a.active li {
       color: white;
       background-color: #008BF8; }
-      ul#notes li:hover .note-title {
+      ul#notes li:hover .note-title,
+      ul#notes a.active li .note-title {
         color: white; }
     ul#notes li .note-title {
       color: black;

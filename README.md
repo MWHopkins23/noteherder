@@ -8,3 +8,5 @@ yarn add re-base react-router bootstrap font-awesome
 Firebase:
 Add GitHub auth
 Add authorized domain
+
+form>p>input^p>textarea^.form-actions>button[type=submit]+button>i.fa.fa-trash

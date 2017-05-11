@@ -1,7 +1,9 @@
 import React from 'react'
+import { Route, Switch, Link } from 'react-router-dom'
 
 import './Main.css'
 import NotesList from './NotesList'
+import NoteForm from './NoteForm'
 
 const UserLinks = ({ signOut }) => (
   <div className="UserLinks">
@@ -15,20 +17,23 @@ const Nav = ({ signOut }) => {
   return (
     <nav className="Nav">
       <div className="logo">N</div>
-      <button className="new-note"><span>+</span></button>
+      <Link to="/notes">
+        <button className="new-note"><span>+</span></button>
+      </Link>
       <UserLinks signOut={signOut} />
     </nav>
   )
 }
 
-const Main = ({ signOut }) => {
+const Main = ({ signOut, ...otherProps }) => {
   return (
     <main className="Main">
       <Nav signOut={signOut} />
-      <NotesList />
-      <div>
-        <h2>Main</h2>
-      </div>
+      <NotesList notes={otherProps.notes} />
+      <Switch>
+        <Route path="/notes/:id" render={(props) => <NoteForm {...props} {...otherProps} />} />
+        <Route path="/notes" render={(props) => <NoteForm {...props} {...otherProps} />} />
+      </Switch>
     </main>
   )
 }
