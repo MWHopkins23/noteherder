@@ -8,28 +8,8 @@ import './App.css';
 import base from './base'
 import SignIn from './SignIn'
 import Main from './Main'
+import { PublicRoute, PrivateRoute } from './RouteHelpers'
 
-const PrivateRoute = ({component: Component, render, authed, ...rest}) => {
-  return (
-    <Route
-      {...rest}
-      render={(props) => authed
-        ? (render && render()) || <Component {...props} />
-        : <Redirect to={{pathname: '/sign-in', state: {from: props.location}}} />}
-    />
-  )
-}
-
-const PublicRoute = ({component: Component, render, authed, ...rest}) => {
-  return (
-    <Route
-      {...rest}
-      render={(props) => !authed
-        ? (render && render()) || <Component {...props} />
-        : <Redirect to='/notes' />}
-    />
-  )
-}
 
 class App extends Component {
   constructor(props) {
