@@ -20,11 +20,20 @@ class App extends Component {
   }
 
   componentWillMount() {
+    this.getUserFromLocalStorage()
     base.onAuth((user) => {
       if (user) {
         this.authHandler(null, { user });
+      } else {
+        this.signOut()
       }
     })
+  }
+
+  getUserFromLocalStorage = () => {
+    const user = localStorage.getItem('user')
+    if (!user) return
+    this.setState({ user: JSON.parse(user) })
   }
 
   authHandler = (err, authData) => {
@@ -35,6 +44,7 @@ class App extends Component {
     this.setState({
       user: authData.user,
     })
+    localStorage.setItem('user', JSON.stringify(authData.user))
   }
 
   authed = () => {
@@ -44,6 +54,7 @@ class App extends Component {
   signOut = () => {
     base.unauth()
     this.setState({ user: null })
+    localStorage.removeItem('user')
   }
 
   render() {
@@ -51,13 +62,13 @@ class App extends Component {
       <div className="App container wrap">
         <Router>
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/notes" />} />
             <PrivateRoute path="/notes" authed={this.authed()} render={() => (
               <Main signOut={this.signOut} />
             )} />
             <PublicRoute path="/sign-in" authed={this.authed()} render={() => (
               <SignIn authHandler={this.authHandler} />
             )} />
+            <Route render={() => <Redirect to="/notes" />} />
           </Switch>
         </Router>
       </div>
