@@ -4,7 +4,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "bootstrap": "^3.3.7",
+    "draft-js": "^0.10.1",
+    "draft-js-editor": "^1.8.19",
     "font-awesome": "^4.7.0",
     "re-base": "^2.7.0",
     "react": "^15.5.4",

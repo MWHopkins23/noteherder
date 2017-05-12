@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
+import { EditorState, convertFromRaw, convertToRaw } from 'draft-js'
+import Editor from 'draft-js-editor'
 
 class NoteForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      note: this.blankNote()
+      note: this.blankNote(),
     }
   }
 
   componentWillReceiveProps(nextProps) {
     let note
     if (nextProps.match.params.id) {
-      console.log('found it', nextProps.match.params.id)
-      console.log(nextProps.notes)
       note = nextProps.notes[nextProps.match.params.id]
-      console.log({ note })
+      if (note && note.editorState) {
+        note.editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(note.editorState)))
+      }
     }
     this.setState({ note: note || this.blankNote() })
-    console.log(nextProps.match)
   }
   
   blankNote = () => {
@@ -25,6 +26,7 @@ class NoteForm extends Component {
       id: null,
       title: '',
       body: '',
+      editorState: EditorState.createEmpty()
     }
   }
 
@@ -32,6 +34,18 @@ class NoteForm extends Component {
     const note = {...this.state.note}
     note[ev.target.name] = ev.target.value
     this.setState({ note }, () => this.props.saveNote(this.state.note))
+  }
+
+  handleEditorChanges = (editorState) => {
+    const note = {...this.state.note}
+    note.editorState = editorState
+    this.setState({ note })
+    note.editorState = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+    this.props.saveNote(note)
+    // const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+    // const note = {...this.state.note}
+    // note.body = editorState.getCurrentContent().getPlainText()
+    // this.setState({ note }, () => this.props.saveNote(this.state.note))
   }
 
   render() {
@@ -53,14 +67,13 @@ class NoteForm extends Component {
               value={this.state.note.title}
             />
           </p>
-          <p>
-            <textarea
-              name="body"
-              placeholder="Just start typing..."
-              onChange={this.handleChanges}
-              value={note.body}
-            ></textarea>
-          </p>
+          <Editor
+            name="body"
+            placeholder="Just start typing..."
+            value={note.body}
+            editorState={this.state.note.editorState}
+            onChange={this.handleEditorChanges}
+          />
         </form>
       </div>
     )
