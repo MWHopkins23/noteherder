@@ -2,6 +2,14 @@
   border-left: 1px solid #eee;
   border-right: 1px solid #eee;
   max-width: 30rem;
+  min-width: 30rem;
+}
+
+@media (max-width: 800px) {
+  .NotesList {
+    min-width: 20rem;
+    max-width: 20rem;
+  }
 }
 
 .NotesList h3 {
@@ -23,54 +31,66 @@ ul#notes {
   margin-top: 1em;
   padding: 0;
   width: 100%;
-  color: #999; }
-  ul#notes a:link, ul#notes a:visited, ul#notes a:hover, ul#notes a:active {
-    color: inherit;
-  }
-  ul#notes li {
-    height: 100px;
-    font-size: 90%;
-    cursor: pointer;
-    overflow: hidden; }
-    ul#notes li .note {
-      border-top: 1px solid #eee;
-      margin: 0 2rem;
-      padding: 1rem 4px; }
-    ul#notes a:first-of-type li .note {
-      border-top: none; }
-    ul#notes li:hover {
-      color: white;
-      background-color: #008BF8; }
-      ul#notes li:hover .note {
-        border-color: transparent; }
-      ul#notes li:hover .note-title {
-        color: white; }
-    ul#notes a.active li {
-      border: 4px solid #ddd;
-    }
-    ul#notes a.active li .note {
-      border-color: transparent;
-      padding: calc(1rem - 4px) 0;
-    }
-    ul#notes li .note-title {
-      color: #4a4a4a;
-      font-family: "Fauna One";
-      font-size: 120%;
-      font-weight: 400;
-      white-space: nowrap;
-      overflow-x: hidden;
-      text-overflow: ellipsis; }
-    ul#notes li .note-body {
-      height: 54px;
-      overflow: hidden;
-      margin-top: 0.5rem; }
-    ul#notes li a.note {
-      display: block;
-      height: 100px;
-      padding: 1em;
-      text-decoration: none; }
-    ul#notes li a.note:hover {
-      color: white; }
+  color: #999;
+}
+
+ul#notes a:link, ul#notes a:visited, ul#notes a:hover, ul#notes a:active {
+  color: inherit;
+}
+ul#notes li {
+  height: 100px;
+  font-size: 90%;
+  cursor: pointer;
+  overflow: hidden;
+}
+ul#notes li .note {
+  border-top: 1px solid #eee;
+  margin: 0 2rem;
+  padding: 1rem 4px; 
+}
+ul#notes a:first-of-type li .note {
+  border-top: none; 
+}
+ul#notes li:hover {
+  color: white;
+  background-color: #008BF8; 
+}
+ul#notes li:hover .note {
+  border-color: transparent;
+}
+ul#notes li:hover .note-title {
+  color: white;
+}
+ul#notes a.active li {
+  border: 4px solid #ddd;
+}
+ul#notes a.active li .note {
+  border-color: transparent;
+  padding: calc(1rem - 4px) 0;
+}
+ul#notes li .note-title {
+  color: #4a4a4a;
+  font-family: "Fauna One";
+  font-size: 120%;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+ul#notes li .note-body {
+  height: 54px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+ul#notes li a.note {
+  display: block;
+  height: 100px;
+  padding: 1em;
+  text-decoration: none;
+}
+ul#notes li a.note:hover {
+  color: white;
+}
 
 .NoteForm {
   flex-grow: 1;
@@ -101,6 +121,8 @@ input[name="title"] {
   font-family: "Fauna One";
   color: #008BF8;
   font-weight: 400;
-  width: 100%; }
-  input[name="title"] {
-    outline: none; }
+  width: 100%;
+}
+input[name="title"] {
+  outline: none;
+}
