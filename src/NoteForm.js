@@ -5,22 +5,21 @@ import RichTextEditor from 'react-rte'
 class NoteForm extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      note: this.blankNote(),
-      editorValue: RichTextEditor.createEmptyValue()
-    }
+    this.state = this.blankState()
   }
 
   componentWillReceiveProps(nextProps) {
-    let note
-    if (nextProps.match.params.id) {
-      note = nextProps.notes[nextProps.match.params.id]
+    const nextId = nextProps.match.params.id
+    const note = nextProps.notes[nextId] || this.blankNote()
+
+    if (this.state.editorValue.toString('html') !== note.body) {
+      this.setState({
+        note,
+        editorValue: RichTextEditor.createValueFromString(note.body, 'html')
+      })
+    } else {
+      this.setState({ note })
     }
-    note = note || this.blankNote()
-    this.setState({ 
-      note,
-      // editorValue: RichTextEditor.createValueFromString(note.body, 'html')
-    })
   }
   
   blankNote = () => {
@@ -31,6 +30,13 @@ class NoteForm extends Component {
     }
   }
 
+  blankState = () => {
+    return {
+      note: this.blankNote(),
+      editorValue: RichTextEditor.createEmptyValue()
+    }
+  }
+
   handleChanges = (ev) => {
     const note = {...this.state.note}
     note[ev.target.name] = ev.target.value
@@ -38,11 +44,9 @@ class NoteForm extends Component {
   }
 
   handleEditorChanges = (editorValue) => {
-    this.setState({ editorValue })
     const note = {...this.state.note}
     note.body = editorValue.toString('html')
-    this.setState({ note })
-    this.props.saveNote(note)
+    this.setState({ note, editorValue }, () => this.props.saveNote(note))
   }
 
   render() {
