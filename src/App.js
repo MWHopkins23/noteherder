@@ -78,6 +78,7 @@ class App extends Component {
     }
     const notes = {...this.state.notes}
     notes[note.id] = note
+    console.log(note)
     this.setState({ notes })
     if (shouldRedirect) {
       this.props.history.push(`/notes/${note.id}`)

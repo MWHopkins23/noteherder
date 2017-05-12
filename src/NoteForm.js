@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { EditorState, convertFromRaw, convertToRaw } from 'draft-js'
-import Editor from 'draft-js-editor'
+// import { EditorState, convertFromRaw, convertToRaw } from 'draft-js'
+import RichTextEditor from 'react-rte'
 
 class NoteForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       note: this.blankNote(),
+      editorValue: RichTextEditor.createEmptyValue()
     }
   }
 
@@ -14,11 +15,12 @@ class NoteForm extends Component {
     let note
     if (nextProps.match.params.id) {
       note = nextProps.notes[nextProps.match.params.id]
-      if (note && note.editorState) {
-        note.editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(note.editorState)))
-      }
     }
-    this.setState({ note: note || this.blankNote() })
+    note = note || this.blankNote()
+    this.setState({ 
+      note,
+      // editorValue: RichTextEditor.createValueFromString(note.body, 'html')
+    })
   }
   
   blankNote = () => {
@@ -26,26 +28,21 @@ class NoteForm extends Component {
       id: null,
       title: '',
       body: '',
-      editorState: EditorState.createEmpty()
     }
   }
 
   handleChanges = (ev) => {
     const note = {...this.state.note}
     note[ev.target.name] = ev.target.value
-    this.setState({ note }, () => this.props.saveNote(this.state.note))
+    this.setState({ note }, () => this.props.saveNote(note))
   }
 
-  handleEditorChanges = (editorState) => {
+  handleEditorChanges = (editorValue) => {
+    this.setState({ editorValue })
     const note = {...this.state.note}
-    note.editorState = editorState
+    note.body = editorValue.toString('html')
     this.setState({ note })
-    note.editorState = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
     this.props.saveNote(note)
-    // const content = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
-    // const note = {...this.state.note}
-    // note.body = editorState.getCurrentContent().getPlainText()
-    // this.setState({ note }, () => this.props.saveNote(this.state.note))
   }
 
   render() {
@@ -53,7 +50,7 @@ class NoteForm extends Component {
     return (
       <div className="NoteForm">
         <div className="form-actions">
-          <button type="button" onClick={() => this.props.removeNote(this.state.note)}>
+          <button type="button" onClick={() => this.props.removeNote(note)}>
             <i className="fa fa-trash-o"></i>
           </button>
         </div>
@@ -64,14 +61,13 @@ class NoteForm extends Component {
               name="title"
               placeholder="Title your note"
               onChange={this.handleChanges}
-              value={this.state.note.title}
+              value={note.title}
             />
           </p>
-          <Editor
+          <RichTextEditor
             name="body"
             placeholder="Just start typing..."
-            value={note.body}
-            editorState={this.state.note.editorState}
+            value={this.state.editorValue}
             onChange={this.handleEditorChanges}
           />
         </form>
