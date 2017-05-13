@@ -37,13 +37,16 @@
   border-radius: 20px;
   margin-top: 2rem;
   font-weight: 300;
-  background-color: #008BF8;
-  color: white;
+  border: 1px solid #008BF8;
+  color: #008BF8;
+  background: transparent;
+  /*background-color: #008BF8;*/
+  /*color: white;*/
   font-size: 3rem;
   outline: none;
 }
 .Nav button.new-note span {
   position: relative;
-  top: -5px;
+  top: -6px;
   left: 0;
 }
