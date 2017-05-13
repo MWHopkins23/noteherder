@@ -40,6 +40,7 @@
   background-color: #008BF8;
   color: white;
   font-size: 3rem;
+  outline: none;
 }
 .Nav button.new-note span {
   position: relative;

@@ -13,7 +13,7 @@ const Note = ({ note }) => {
     <NavLink to={`/notes/${note.id}`}>
       <li>
         <div className="note">
-          <div className="note-title">{note.title}</div>
+          <div className="note-title">{note.title || 'Untitled'}</div>
           <div className="note-body" dangerouslySetInnerHTML={{__html: body}}></div>
         </div>
       </li>

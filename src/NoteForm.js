@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 // import { EditorState, convertFromRaw, convertToRaw } from 'draft-js'
 import RichTextEditor from 'react-rte'
 
+import './NoteForm.css'
+
 class NoteForm extends Component {
   constructor(props) {
     super(props)
