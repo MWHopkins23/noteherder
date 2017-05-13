@@ -21,15 +21,20 @@ const Note = ({ note }) => {
   )
 }
 
-const NotesList = (props) => {
+const NotesList = ({ notes }) => {
+  const sortNotes = (a, b) => (
+    (notes[b].updated || 0) - (notes[a].updated || 0)
+  )
+
   return (
     <div className="NotesList">
       <h3>Notes</h3>
       <ul id="notes">
         {
           Object
-            .keys(props.notes)
-            .map(key => <Note note={props.notes[key]} key={key} />)
+            .keys(notes)
+            .sort(sortNotes)
+            .map(key => <Note note={notes[key]} key={key} />)
         }
       </ul>
     </div>

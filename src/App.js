@@ -71,11 +71,13 @@ class App extends Component {
   }
 
   saveNote = (note) => {
+    const timestamp = Date.now()
     let shouldRedirect = false
     if (!note.id) {
-      note.id = `note-${Date.now()}`
+      note.id = `note-${timestamp}`
       shouldRedirect = true
     }
+    note.updated = timestamp
     const notes = {...this.state.notes}
     notes[note.id] = note
     this.setState({ notes })
