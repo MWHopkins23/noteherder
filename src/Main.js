@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
 
 import './Main.css'
+import quill from './quill.svg'
 import NotesList from './NotesList'
 import NoteForm from './NoteForm'
 
@@ -16,7 +17,7 @@ const UserLinks = ({ signOut }) => (
 const Nav = ({ signOut }) => {
   return (
     <nav className="Nav">
-      <div className="logo">N</div>
+      <div className="logo"><img src={quill} alt="Noteherder" /></div>
       <Link to="/notes">
         <button className="new-note"><span>+</span></button>
       </Link>

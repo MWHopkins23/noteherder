@@ -9,6 +9,12 @@
     height: 80px;
     padding: 0 2rem;
     margin: 0; }
+    .SignIn header img {
+      width: 30px;
+      height: 30px;
+      padding-bottom: 4px;
+      margin-right: 4px;
+    }
     .SignIn header .title {
       color: #008BF8;
       font-weight: 400;
